@@ -569,7 +569,7 @@ mixin ColumnState implements IPlutoGridState {
     // Get size after rendering virtually
     // https://stackoverflow.com/questions/54351655/flutter-textfield-width-should-match-width-of-contained-text
     TextSpan textSpan = TextSpan(
-      style: DefaultTextStyle.of(context).style,
+      style: configuration.style.cellTextStyle,
       text: maxValue,
     );
 
