@@ -55,8 +55,8 @@ class PlutoVisibilityLayout extends RenderObjectWidget
   }
 }
 
-class PlutoVisibilityLayoutRenderObjectElement
-    extends MultiChildRenderObjectElement {
+class PlutoVisibilityLayoutRenderObjectElement extends RenderObjectElement
+    implements MultiChildRenderObjectElement {
   PlutoVisibilityLayoutRenderObjectElement({
     required PlutoVisibilityLayout widget,
     required this.scrollController,
@@ -70,6 +70,9 @@ class PlutoVisibilityLayoutRenderObjectElement
   final double initialViewportDimension;
 
   TextDirection textDirection;
+
+  MultiChildRenderObjectWidget get widget =>
+      super.widget as MultiChildRenderObjectWidget;
 
   @override
   ContainerRenderObjectMixin<RenderObject,
