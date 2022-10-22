@@ -96,7 +96,7 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
     PlutoRow(
       cells: {
         'id': PlutoCell(value: 'user1'),
-        'name': PlutoCell(value: 'Mike'),
+        'name': PlutoCell(value: 'Mike hafksfhajdsfhasdk'),
         'age': PlutoCell(value: 20),
         'role': PlutoCell(value: 'Programmer'),
         'joined': PlutoCell(value: '2021-01-01'),
@@ -109,7 +109,7 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
         'id': PlutoCell(value: 'user2'),
         'name': PlutoCell(value: 'Jack'),
         'age': PlutoCell(value: 25),
-        'role': PlutoCell(value: 'Designer'),
+        'role': PlutoCell(value: 'Designer 148927312377274'),
         'joined': PlutoCell(value: '2021-02-01'),
         'working_time': PlutoCell(value: '10:00'),
         'salary': PlutoCell(value: 400),
@@ -150,15 +150,26 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
         child: PlutoGrid(
           columns: columns,
           rows: rows,
-          columnGroups: columnGroups,
+          // columnGroups: columnGroups,
           onLoaded: (PlutoGridOnLoadedEvent event) {
             stateManager = event.stateManager;
-            stateManager.setShowColumnFilter(true);
+            stateManager.autoFitColumn(
+                context, event.stateManager.bodyColumns[1]);
+            stateManager.notifyResizingListeners();
           },
           onChanged: (PlutoGridOnChangedEvent event) {
             print(event);
           },
-          configuration: const PlutoGridConfiguration(),
+          configuration: const PlutoGridConfiguration(
+              columnSize: PlutoGridColumnSizeConfig(
+            autoSizeMode: PlutoAutoSizeMode.equal,
+            resizeMode: PlutoResizeMode.normal,
+            restoreAutoSizeAfterHideColumn: false,
+            restoreAutoSizeAfterFrozenColumn: false,
+            restoreAutoSizeAfterMoveColumn: false,
+            restoreAutoSizeAfterInsertColumn: false,
+            restoreAutoSizeAfterRemoveColumn: false,
+          )),
         ),
       ),
     );

@@ -515,7 +515,7 @@ mixin ColumnState implements IPlutoGridState {
 
   @override
   void resizeColumn(PlutoColumn column, double offset) {
-    if (columnsResizeMode.isNone || !column.enableDropToResize) {
+    if (columnsResizeMode.isNone) {
       return;
     }
 
