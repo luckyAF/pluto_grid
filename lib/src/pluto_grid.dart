@@ -522,7 +522,7 @@ class PlutoGridState extends PlutoStateWithChange<PlutoGrid> {
       return;
     }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       widget.onLoaded!(PlutoGridOnLoadedEvent(
         stateManager: _stateManager,
       ));
@@ -534,7 +534,7 @@ class PlutoGridState extends PlutoStateWithChange<PlutoGrid> {
       return;
     }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       if (_stateManager.currentCell == null && widget.rows.isNotEmpty) {
         final firstVisible =
             widget.columns.firstWhereOrNull((element) => !element.hide);
@@ -1373,10 +1373,9 @@ extension PlutoGridModeExtension on PlutoGridMode? {
   bool get isPopup => this == PlutoGridMode.popup;
 }
 
-enum PlutoGridLoadingLevel {
-  grid,
-  rows;
+enum PlutoGridLoadingLevel { grid, rows }
 
+extension PlutoGridLoadingLevelExt on PlutoGridLoadingLevel {
   bool get isGrid => this == PlutoGridLoadingLevel.grid;
 
   bool get isRows => this == PlutoGridLoadingLevel.rows;

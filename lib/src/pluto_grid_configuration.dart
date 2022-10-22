@@ -165,7 +165,7 @@ class PlutoGridStyleConfig {
       matchTextDirection: true,
       fontFamily: 'MaterialIcons',
     ),
-    this.rowGroupEmptyIcon = Icons.noise_control_off,
+    // this.rowGroupEmptyIcon = Icons.noise_control_off,
     this.gridBorderRadius = BorderRadius.zero,
     this.gridPopupBorderRadius = BorderRadius.zero,
   });
@@ -221,7 +221,7 @@ class PlutoGridStyleConfig {
       matchTextDirection: true,
       fontFamily: 'MaterialIcons',
     ),
-    this.rowGroupEmptyIcon = Icons.noise_control_off,
+    // this.rowGroupEmptyIcon = Icons.noise_control_off,
     this.gridBorderRadius = BorderRadius.zero,
     this.gridPopupBorderRadius = BorderRadius.zero,
   });
@@ -363,7 +363,7 @@ class PlutoGridStyleConfig {
   final IconData rowGroupCollapsedIcon;
 
   /// Icon when RowGroup is empty.
-  final IconData rowGroupEmptyIcon;
+  // final IconData rowGroupEmptyIcon;
 
   /// Apply the border radius of [PlutoGrid].
   final BorderRadiusGeometry gridBorderRadius;
@@ -410,7 +410,7 @@ class PlutoGridStyleConfig {
     PlutoOptional<Icon?>? columnDescendingIcon,
     IconData? rowGroupExpandedIcon,
     IconData? rowGroupCollapsedIcon,
-    IconData? rowGroupEmptyIcon,
+    // IconData? rowGroupEmptyIcon,
     BorderRadiusGeometry? gridBorderRadius,
     BorderRadiusGeometry? gridPopupBorderRadius,
   }) {
@@ -472,8 +472,8 @@ class PlutoGridStyleConfig {
       rowGroupExpandedIcon: rowGroupExpandedIcon ?? this.rowGroupExpandedIcon,
       rowGroupCollapsedIcon:
           rowGroupCollapsedIcon ?? this.rowGroupCollapsedIcon,
-      rowGroupEmptyIcon: rowGroupEmptyIcon ?? this.rowGroupEmptyIcon,
       gridBorderRadius: gridBorderRadius ?? this.gridBorderRadius,
+      // rowGroupEmptyIcon: rowGroupEmptyIcon ?? this.rowGroupEmptyIcon,
       gridPopupBorderRadius:
           gridPopupBorderRadius ?? this.gridPopupBorderRadius,
     );
@@ -1160,8 +1160,10 @@ enum PlutoGridEnterKeyAction {
   toggleEditing,
 
   /// Pressing the Enter key does nothing.
-  none;
+  none,
+}
 
+extension PlutoGridEnterKeyActionExt on PlutoGridEnterKeyAction {
   bool get isEditingAndMoveDown =>
       this == PlutoGridEnterKeyAction.editingAndMoveDown;
 

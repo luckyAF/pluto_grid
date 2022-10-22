@@ -10,8 +10,8 @@ class PlutoBodyColumns extends PlutoStatefulWidget {
 
   const PlutoBodyColumns(
     this.stateManager, {
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   PlutoBodyColumnsState createState() => PlutoBodyColumnsState();

@@ -1,5 +1,4 @@
-import 'package:collection/collection.dart'
-    show IterableNumberExtension, IterableExtension;
+import 'package:collection/collection.dart';
 import 'package:pluto_grid/pluto_grid.dart';
 
 class PlutoAggregateHelper {

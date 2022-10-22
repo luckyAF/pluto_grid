@@ -207,26 +207,46 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
 /// ```
 class PlutoGridStateManager extends PlutoGridStateChangeNotifier {
   PlutoGridStateManager({
-    required super.columns,
-    required super.rows,
-    required super.gridFocusNode,
-    required super.scroll,
-    super.columnGroups,
-    super.onChanged,
-    super.onSelected,
-    super.onSorted,
-    super.onRowChecked,
-    super.onRowDoubleTap,
-    super.onRowSecondaryTap,
-    super.onRowsMoved,
-    super.rowColorCallback,
-    super.createHeader,
-    super.createFooter,
-    super.columnMenuDelegate,
-    super.notifierFilterResolver,
-    super.configuration,
-    super.mode,
-  });
+    required List<PlutoColumn> columns,
+    required List<PlutoRow> rows,
+    required FocusNode gridFocusNode,
+    required PlutoGridScrollController scroll,
+    List<PlutoColumnGroup>? columnGroups,
+    PlutoOnChangedEventCallback? onChanged,
+    PlutoOnSelectedEventCallback? onSelected,
+    PlutoOnSortedEventCallback? onSorted,
+    PlutoOnRowCheckedEventCallback? onRowChecked,
+    PlutoOnRowDoubleTapEventCallback? onRowDoubleTap,
+    PlutoOnRowSecondaryTapEventCallback? onRowSecondaryTap,
+    PlutoOnRowsMovedEventCallback? onRowsMoved,
+    PlutoRowColorCallback? rowColorCallback,
+    CreateHeaderCallBack? createHeader,
+    CreateFooterCallBack? createFooter,
+    PlutoColumnMenuDelegate? columnMenuDelegate,
+    PlutoChangeNotifierFilterResolver? notifierFilterResolver,
+    PlutoGridConfiguration? configuration,
+    PlutoGridMode? mode,
+  }) : super(
+          columns: columns,
+          rows: rows,
+          gridFocusNode: gridFocusNode,
+          scroll: scroll,
+          columnGroups: columnGroups,
+          onChanged: onChanged,
+          onSelected: onSelected,
+          onSorted: onSorted,
+          onRowChecked: onRowChecked,
+          onRowDoubleTap: onRowDoubleTap,
+          onRowSecondaryTap: onRowSecondaryTap,
+          onRowsMoved: onRowsMoved,
+          rowColorCallback: rowColorCallback,
+          createHeader: createHeader,
+          createFooter: createFooter,
+          columnMenuDelegate: columnMenuDelegate,
+          notifierFilterResolver: notifierFilterResolver,
+          configuration: configuration,
+          mode: mode,
+        );
 
   PlutoChangeNotifierFilter<T> resolveNotifierFilter<T>() {
     return PlutoChangeNotifierFilter<T>(
@@ -490,8 +510,10 @@ enum PlutoGridSelectingMode {
   none,
 
   /// using only internal
-  horizontal;
+  horizontal
+}
 
+extension PlutoGridSelectingModeExt on PlutoGridSelectingMode {
   bool get isCell => this == PlutoGridSelectingMode.cell;
 
   bool get isRow => this == PlutoGridSelectingMode.row;

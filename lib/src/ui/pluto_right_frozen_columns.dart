@@ -9,8 +9,8 @@ class PlutoRightFrozenColumns extends PlutoStatefulWidget {
 
   const PlutoRightFrozenColumns(
     this.stateManager, {
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   PlutoRightFrozenColumnsState createState() => PlutoRightFrozenColumnsState();

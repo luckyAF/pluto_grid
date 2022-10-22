@@ -14,8 +14,8 @@ class PlutoLoading extends StatelessWidget {
     this.indicatorColor,
     this.text,
     this.textStyle,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

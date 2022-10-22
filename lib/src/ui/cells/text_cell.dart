@@ -80,7 +80,7 @@ mixin TextCellState<T extends TextCell> on State<T> implements TextFieldProps {
      * if user do not press enter key, onEditingComplete is not called and the value is not saved.
      */
     if (_cellEditingStatus.isChanged) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance?.addPostFrameCallback((_) {
         _changeValue(notify: false);
 
         widget.stateManager.notifyListenersOnPostFrame();
@@ -265,11 +265,9 @@ mixin TextCellState<T extends TextCell> on State<T> implements TextFieldProps {
   }
 }
 
-enum _CellEditingStatus {
-  init,
-  changed,
-  updated;
+enum _CellEditingStatus { init, changed, updated }
 
+extension CellEditingStatusExt on _CellEditingStatus {
   bool get isNotChanged {
     return _CellEditingStatus.changed != this;
   }

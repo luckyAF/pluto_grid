@@ -4,8 +4,10 @@ enum PlutoGridEventType {
   normal,
   throttleTrailing,
   throttleLeading,
-  debounce;
+  debounce,
+}
 
+extension PlutoGridEventTypeExt on PlutoGridEventType {
   bool get isNormal => this == PlutoGridEventType.normal;
 
   bool get isThrottleTrailing => this == PlutoGridEventType.throttleTrailing;

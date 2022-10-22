@@ -364,8 +364,10 @@ enum PlutoColumnTextAlign {
   left,
   center,
   right,
-  end;
+  end,
+}
 
+extension PlutoColumnTextAlignExt on PlutoColumnTextAlign {
   TextAlign get value {
     switch (this) {
       case PlutoColumnTextAlign.start:
@@ -410,8 +412,10 @@ enum PlutoColumnTextAlign {
 enum PlutoColumnFrozen {
   none,
   start,
-  end;
+  end,
+}
 
+extension PlutoColumnFrozenExt on PlutoColumnFrozen {
   bool get isNone {
     return this == PlutoColumnFrozen.none;
   }
@@ -429,11 +433,9 @@ enum PlutoColumnFrozen {
   }
 }
 
-enum PlutoColumnSort {
-  none,
-  ascending,
-  descending;
+enum PlutoColumnSort { none, ascending, descending }
 
+extension PlutoColumnSortExt on PlutoColumnSort {
   bool get isNone {
     return this == PlutoColumnSort.none;
   }

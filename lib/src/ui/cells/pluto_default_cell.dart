@@ -143,13 +143,15 @@ class _PlutoDefaultCellState extends PlutoStateWithChange<PlutoDefaultCell> {
     if (_canExpand) {
       expandIcon = IconButton(
         onPressed: _isEmptyGroup ? null : _handleToggleExpandedRowGroup,
-        icon: _isEmptyGroup
-            ? Icon(
-                style.rowGroupEmptyIcon,
-                size: style.iconSize / 2,
-                color: style.iconColor,
-              )
-            : widget.row.type.group.expanded
+        icon:
+            // _isEmptyGroup
+            //     ? Icon(
+            //         style.rowGroupEmptyIcon,
+            //         size: style.iconSize / 2,
+            //         color: style.iconColor,
+            //       )
+            //     :
+            widget.row.type.group.expanded
                 ? Icon(
                     style.rowGroupExpandedIcon,
                     size: style.iconSize,
@@ -325,8 +327,8 @@ class CheckboxSelectionWidget extends PlutoStatefulWidget {
     required this.column,
     required this.row,
     required this.rowIdx,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   CheckboxSelectionWidgetState createState() => CheckboxSelectionWidgetState();

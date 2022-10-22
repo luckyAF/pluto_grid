@@ -10,8 +10,8 @@ class PlutoBodyColumnsFooter extends PlutoStatefulWidget {
 
   const PlutoBodyColumnsFooter(
     this.stateManager, {
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   PlutoBodyColumnsFooterState createState() => PlutoBodyColumnsFooterState();

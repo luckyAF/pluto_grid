@@ -11,13 +11,13 @@ import 'package:pluto_grid/pluto_grid.dart';
 class PlutoVisibilityLayout extends RenderObjectWidget
     implements MultiChildRenderObjectWidget {
   const PlutoVisibilityLayout({
-    super.key,
     required this.children,
     required this.delegate,
     required this.scrollController,
     this.initialViewportDimension = 1920,
     this.textDirection = TextDirection.ltr,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   final List<PlutoVisibilityLayoutId> children;
@@ -55,8 +55,8 @@ class PlutoVisibilityLayout extends RenderObjectWidget
   }
 }
 
-class PlutoVisibilityLayoutRenderObjectElement extends RenderObjectElement
-    implements MultiChildRenderObjectElement {
+class PlutoVisibilityLayoutRenderObjectElement
+    extends MultiChildRenderObjectElement {
   PlutoVisibilityLayoutRenderObjectElement({
     required PlutoVisibilityLayout widget,
     required this.scrollController,
@@ -405,9 +405,9 @@ class PlutoVisibilityLayoutRenderObjectElement extends RenderObjectElement
 class PlutoVisibilityLayoutId extends LayoutId {
   PlutoVisibilityLayoutId({
     Key? key,
-    required super.id,
+    required Object id,
     required PlutoVisibilityLayoutChild child,
-  }) : super(key: key, child: child);
+  }) : super(id: id, key: key, child: child);
 
   PlutoVisibilityLayoutChild get layoutChild =>
       child as PlutoVisibilityLayoutChild;

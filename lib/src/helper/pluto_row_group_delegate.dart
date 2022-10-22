@@ -10,10 +10,9 @@ import 'package:pluto_grid/pluto_grid.dart';
 ///
 /// [byColumn] groups rows by a specified column.
 /// {@endtemplate}
-enum PlutoRowGroupDelegateType {
-  tree,
-  byColumn;
+enum PlutoRowGroupDelegateType { tree, byColumn }
 
+extension PlutoRowGroupDelegateTypeExt on PlutoRowGroupDelegateType {
   bool get isTree => this == PlutoRowGroupDelegateType.tree;
 
   bool get isByColumn => this == PlutoRowGroupDelegateType.byColumn;

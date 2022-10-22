@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pluto_grid/pluto_grid.dart';
+import 'dart:core';
+import 'dart:math' show min;
 
 class PlutoRow {
   PlutoRow({
@@ -132,11 +134,34 @@ class PlutoRow {
 enum PlutoRowState {
   none,
   added,
-  updated;
+  updated,
+}
 
+extension PlutoRowStateExt on PlutoRowState {
   bool get isNone => this == PlutoRowState.none;
 
   bool get isAdded => this == PlutoRowState.added;
 
   bool get isUpdated => this == PlutoRowState.updated;
+}
+
+extension PlutoRowslicesExt on List<PlutoRow> {
+  /// Contiguous [slice]s of [this] with the given [length].
+  ///
+  /// Each slice is a view of this list [length] elements long, except for the
+  /// last one which may be shorter if [this] contains too few elements. Each
+  /// slice begins after the last one ends.
+  ///
+  /// As with [slice], these slices are backed by this list, which must not
+  /// change its length while the views are being used.
+  ///
+  /// For example, `[1, 2, 3, 4, 5].slices(2)` returns `[[1, 2], [3, 4], [5]]`.
+  Iterable<List<PlutoRow>> slices(int length) {
+    if (length < 1) throw RangeError.range(length, 1, null, 'length');
+    List<List<PlutoRow>> list = [];
+    for (var i = 0; i < this.length; i += length) {
+      list.add(this.sublist(i, min(i + length, this.length)));
+    }
+    return list;
+  }
 }

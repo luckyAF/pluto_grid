@@ -408,7 +408,7 @@ mixin LayoutState implements IPlutoGridState {
     if (changedShowFrozenColumn || changedMaxWidth) {
       updateVisibilityLayout();
 
-      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
         notifyResizingListeners();
       });
     }

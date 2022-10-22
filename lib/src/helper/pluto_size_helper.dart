@@ -12,11 +12,9 @@ import 'package:collection/collection.dart';
 ///
 /// [pushAndPull] pushes or pulls the size of other siblings.
 /// Also, this keeps the overall width.
-enum PlutoResizeMode {
-  none,
-  normal,
-  pushAndPull;
+enum PlutoResizeMode { none, normal, pushAndPull }
 
+extension PlutoResizeModeExt on PlutoResizeMode {
   bool get isNone => this == PlutoResizeMode.none;
   bool get isNormal => this == PlutoResizeMode.normal;
   bool get isPushAndPull => this == PlutoResizeMode.pushAndPull;
@@ -29,11 +27,9 @@ enum PlutoResizeMode {
 /// [equal] changes the width equally regardless of the current size.
 ///
 /// [scale] scales the width proportionally according to the current size.
-enum PlutoAutoSizeMode {
-  none,
-  equal,
-  scale;
+enum PlutoAutoSizeMode { none, equal, scale }
 
+extension PlutoAutoSizeModeExt on PlutoAutoSizeMode {
   bool get isNone => this == PlutoAutoSizeMode.none;
   bool get isEqual => this == PlutoAutoSizeMode.equal;
   bool get isScale => this == PlutoAutoSizeMode.scale;
@@ -368,13 +364,19 @@ abstract class PlutoResize<T> {
 /// [update] finishes resizing and returns whether or not to change.
 class PlutoResizePushAndPull<T> extends PlutoResize<T> {
   PlutoResizePushAndPull({
-    required super.offset,
-    required super.items,
-    required super.isMainItem,
-    required super.getItemSize,
-    required super.getItemMinSize,
-    required super.setItemSize,
-  });
+    required double offset,
+    required List<T> items,
+    required bool Function(T item) isMainItem,
+    required double Function(T item) getItemSize,
+    required double Function(T item) getItemMinSize,
+    required void Function(T item, double size) setItemSize,
+  }) : super(
+            offset: offset,
+            items: items,
+            isMainItem: isMainItem,
+            getItemSize: getItemSize,
+            getItemMinSize: getItemMinSize,
+            setItemSize: setItemSize);
 
   @override
   bool update() {

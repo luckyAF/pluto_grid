@@ -8,8 +8,8 @@ class PlutoBodyRows extends PlutoStatefulWidget {
 
   const PlutoBodyRows(
     this.stateManager, {
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   PlutoBodyRowsState createState() => PlutoBodyRowsState();

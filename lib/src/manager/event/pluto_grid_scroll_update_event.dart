@@ -4,8 +4,10 @@ import 'package:pluto_grid/pluto_grid.dart';
 enum PlutoGridScrollUpdateDirection {
   all,
   horizontal,
-  vertical;
+  vertical,
+}
 
+extension PlutoGridScrollUpdateDirectionExt on PlutoGridScrollUpdateDirection {
   bool get isAll => this == PlutoGridScrollUpdateDirection.all;
 
   bool get isHorizontal =>

@@ -21,8 +21,8 @@ class PlutoBaseRow extends StatelessWidget {
     required this.columns,
     required this.stateManager,
     this.visibilityLayout = false,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   bool _checkSameDragRows(PlutoRow draggingRow) {
     final List<PlutoRow> selectedRows =

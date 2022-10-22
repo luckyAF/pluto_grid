@@ -8,8 +8,8 @@ class PlutoRightFrozenRows extends PlutoStatefulWidget {
 
   const PlutoRightFrozenRows(
     this.stateManager, {
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   PlutoRightFrozenRowsState createState() => PlutoRightFrozenRowsState();

@@ -41,12 +41,10 @@ enum PlutoAggregateColumnType {
 ///
 /// [expandedRows] processes only expanded rows, not groups.
 /// {@endtemplate}
-enum PlutoAggregateColumnGroupedRowType {
-  all,
-  expandedAll,
-  rows,
-  expandedRows;
+enum PlutoAggregateColumnGroupedRowType { all, expandedAll, rows, expandedRows }
 
+extension PlutoAggregateColumnGroupedRowTypeExt
+    on PlutoAggregateColumnGroupedRowType {
   bool get isAll => this == PlutoAggregateColumnGroupedRowType.all;
 
   bool get isExpandedAll =>
@@ -157,8 +155,8 @@ class PlutoAggregateColumnFooter extends PlutoStatefulWidget {
     this.alignment,
     this.padding,
     this.formatAsCurrency = false,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   PlutoAggregateColumnFooterState createState() =>
