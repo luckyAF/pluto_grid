@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:pluto_grid/pluto_grid.dart';
@@ -573,25 +574,41 @@ mixin ColumnState implements IPlutoGridState {
       text: maxValue,
     );
 
+    TextSpan textHeaderSpan = TextSpan(
+      style: configuration.style.columnTextStyle,
+      text: column.title,
+    );
+
     TextPainter textPainter = TextPainter(
       text: textSpan,
       textDirection: TextDirection.ltr,
     );
+    TextPainter textHeaderPainter = TextPainter(
+      text: textHeaderSpan,
+      textDirection: TextDirection.ltr,
+    );
 
     textPainter.layout();
+    textHeaderPainter.layout();
 
     // todo : Apply (popup type icon, checkbox, drag indicator, renderer)
 
     EdgeInsets cellPadding =
         column.cellPadding ?? configuration.style.defaultCellPadding;
+    EdgeInsets columnPadding =
+        column.titlePadding ?? configuration.style.defaultColumnTitlePadding;
 
-    resizeColumn(
-      column,
-      textPainter.width -
-          column.width +
-          (cellPadding.left + cellPadding.right) +
-          2,
-    );
+    var cellWidth = textPainter.width -
+        column.width +
+        (cellPadding.left + cellPadding.right) +
+        2;
+
+    var columnWidth = textHeaderPainter.width -
+        column.width +
+        (columnPadding.left + columnPadding.right) +
+        2;
+
+    resizeColumn(column, max(cellWidth, columnWidth));
   }
 
   @override
