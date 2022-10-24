@@ -30,6 +30,7 @@ abstract class PlutoColumnType {
   factory PlutoColumnType.number({
     dynamic defaultValue = 0,
     bool negative = true,
+    bool positive = true,
     String format = '#,###',
     bool applyFormatOnInit = true,
     bool allowFirstDot = false,

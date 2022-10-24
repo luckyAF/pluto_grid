@@ -33,7 +33,7 @@ class PlutoGridExamplePage extends StatefulWidget {
 class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
   final List<PlutoColumn> columns = <PlutoColumn>[
     PlutoColumn(
-      title: 'Id',
+      title: 'Id 17824u123098512',
       field: 'id',
       type: PlutoColumnType.text(),
     ),
@@ -45,7 +45,10 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
     PlutoColumn(
       title: 'Age',
       field: 'age',
-      type: PlutoColumnType.number(),
+      type: PlutoColumnType.number(
+        format: '#,###.###',
+        negative: true,
+      ),
     ),
     PlutoColumn(
       title: 'Role',
@@ -155,7 +158,9 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
             stateManager = event.stateManager;
             stateManager.autoFitColumn(
                 context, event.stateManager.bodyColumns[1]);
-            stateManager.notifyResizingListeners();
+            event.stateManager.bodyColumns.forEach((element) {
+              stateManager.autoFitColumn(context, element);
+            });
           },
           onChanged: (PlutoGridOnChangedEvent event) {
             print(event);
