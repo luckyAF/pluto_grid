@@ -10,8 +10,8 @@ class DecimalTextInputFormatter extends TextInputFormatter {
   }) : assert(decimalRange == null || decimalRange >= 0,
             'DecimalTextInputFormatter declaration error') {
     String dp = (decimalRange != null && decimalRange > 0)
-        ? '([$decimalSeparator][0-9]{0,$decimalRange}){0,1}[%]?'
-        : '[%]?';
+        ? '([$decimalSeparator][0-9]{0,$decimalRange}){0,1}'
+        : '';
     String num = '[0-9]*$dp';
 
     if (activatedNegativeValues) {
