@@ -167,6 +167,12 @@ mixin TextCellState<T extends TextCell> on State<T> implements TextFieldProps {
         : _initialCellValue.toString() == value.toString()
             ? _CellEditingStatus.init
             : _CellEditingStatus.updated;
+
+    widget.stateManager.changeCellValue(
+      widget.cell,
+      _textController.text,
+      notify: false,
+    );
   }
 
   void _handleOnComplete() {
